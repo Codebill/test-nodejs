@@ -27,13 +27,13 @@ pipeline{
     stage('CodeQuality'){
       steps{
         sh "echo code quality report"
-        sh "mvn sonar:sonar"
+        //sh "mvn sonar:sonar"
     }
   }
     stage('UploadtoNexus'){
       steps{
         sh "echo uploading artifacts to nexus"
-        sh "mvn deploy"
+        //sh "mvn deploy"
     }
   }
     
