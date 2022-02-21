@@ -4,7 +4,7 @@ pipeline{
     maven "maven3.8.4"
   }
   triggers{
-    pollSCM('* * * * *')
+    //pollSCM('* * * * *')
   } 
   options{
     timestamps()
