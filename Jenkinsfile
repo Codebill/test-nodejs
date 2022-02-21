@@ -43,7 +43,7 @@ node{
     { 
     sh 'docker rmi $(docker images -q)'        
     }
-    stage('deploytok8sclusters')
+    stage('deploytok8scluster')
     { 
     //sh 'kubectl apply -f springapp.yml'        
     }
