@@ -30,7 +30,7 @@ node{
     // some block
     }
     } 
-    stage('dockerpush')
+    stage('dockerpushed')
     { 
     sh "docker push codebillion/spring-boot-docker:4"         
     }
