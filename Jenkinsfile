@@ -15,7 +15,7 @@ pipeline{
     stage('GitClone'){
       steps{
         sh "echo cloning code from github"
-        git " https://github.com/Codebill/maven-web-application.git"
+        git " https://github.com/Codebill/spring-boot-docker.git"
     }
   }
     stage('BuildandTest'){
@@ -39,8 +39,9 @@ pipeline{
     
     stage('ImageBuild'){
       steps{
-        sh "docker build -t codebillion/maven-web-application ."
-        sh "docker login -u codebillion -p rmn1359@1"
+        sh "docker build -t codebillion/spring-boot-docker.git ."
+        withCredentials([string(credentialsId: 'dockerhubcredentials', variable: 'dockerhubcredentials')]) {sh "docker login -u codebillion -p ${dockerhubcredentials}"
+    // some block
         sh "docker push codebillion/maven-web-application"
     }
   }
