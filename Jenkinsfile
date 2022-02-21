@@ -45,7 +45,7 @@ node{
     }
     stage('deploytok8scluster')
     { 
-    sh 'kubectl apply -f springapp.yml'        
+    //sh 'kubectl apply -f springapp.yml'        
     }
 }   
 
