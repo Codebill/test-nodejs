@@ -22,7 +22,7 @@ node{
     }   
     stage('ImageBuild')
     {
-    sh "docker build -t codebillion/spring-boot-docker:6 ."
+    sh "docker build -t codebillion/spring-boot-docker:4 ."
     }
     stage('dockerlogin')
     {
@@ -32,12 +32,12 @@ node{
     } 
     stage('dockerpush')
     { 
-    sh "docker push codebillion/spring-boot-docker:6"         
+    sh "docker push codebillion/spring-boot-docker:4"         
     }
     stage('deployment')
     {
     sh "docker rm -f myapp"
-    //sh "docker run --name myapp -d -p 7000:8080 codebillion/spring-boot-docker:6"
+    //sh "docker run --name myapp -d -p 7000:8080 codebillion/spring-boot-docker:4"
     }
     stage('removedockerimages')
     { 
