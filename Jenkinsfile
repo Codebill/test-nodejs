@@ -44,7 +44,7 @@ pipeline{
         sh "docker push codebillion/maven-web-application"
     }
   }
-    stage('deployment'){
+    stage('deployments'){
       steps{
         sh "docker rm -f myapp"
         sh "docker run --name myapp -d -p 7000:8080 codebillion/maven-web-application"
