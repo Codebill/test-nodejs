@@ -36,19 +36,22 @@ pipeline{
         //sh "mvn deploy"
     }
   }
-    
+    stage('dockerlogin'){
+      steps{
+        withCredentials([string(credentialsId: 'dockerhubcredentials', variable: 'dockerhubcredentials')]) {sh "docker login -u codebillion -p ${dockerhubcredentials}"
+        // some block
+    }
+  }
     stage('ImageBuild'){
       steps{
-        sh "docker build -t codebillion/spring-boot-docker.git ."
-        withCredentials([string(credentialsId: 'dockerhubcredentials', variable: 'dockerhubcredentials')]) {sh "docker login -u codebillion -p ${dockerhubcredentials}"
-    // some block
-        sh "docker push codebillion/maven-web-application"
+        sh "docker build -t codebillion/spring-boot-docker:5 ."
+        sh "docker push codebillion/spring-boot-docker:5"
     }
   }
     stage('deployment'){
       steps{
         sh "docker rm -f myapp"
-        sh "docker run --name myapp -d -p 7000:8080 codebillion/maven-web-application"
+        sh "docker run --name myapp -d -p 7000:8080 codebillion/spring-boot-docker:5"
     }
   }
  
